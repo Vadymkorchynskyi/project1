@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="animated-A"></canvas>
+    <script>
+        // Get the canvas element
+        var canvas = document.getElementById("animated-A");
+        var ctx = canvas.getContext("2d");
+      
+        // Set the canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      
+        // Set the starting position of the letter A
+        var x = canvas.width / 2;
+        var y = canvas.height / 2;
+        var radius = 100;
+        var angle = 0;
+      
+        function drawA() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.beginPath();
+          ctx.moveTo(x + radius * Math.cos(angle), y + radius * Math.sin(angle));
+          ctx.lineTo(x + radius * Math.cos(angle + Math.PI / 4), y + radius * Math.sin(angle + Math.PI / 4));
+          ctx.lineTo(x + radius * Math.cos(angle + Math.PI / 2), y + radius * Math.sin(angle + Math.PI / 2));
+          ctx.lineTo(x + radius * Math.cos(angle + 3 * Math.PI / 4), y + radius * Math.sin(angle + 3 * Math.PI / 4));
+          ctx.lineTo(x + radius * Math.cos(angle + Math.PI), y + radius * Math.sin(angle + Math.PI));
+          ctx.lineTo(x + radius * Math.cos(angle + 5 * Math.PI / 4), y + radius * Math.sin(angle + 5 * Math.PI / 4));
+          ctx.lineTo(x + radius * Math.cos(angle + 3 * Math.PI / 2), y + radius * Math.sin(angle + 3 * Math.PI / 2));
+          ctx.lineTo(x + radius * Math.cos(angle + 7 * Math.PI / 4), y + radius * Math.sin(angle + 7 * Math.PI / 4));
+          ctx.lineTo(x + radius * Math.cos(angle), y + radius * Math.sin(angle));
+          ctx.stroke();
+      
+          angle += 0.05;
+          requestAnimationFrame(drawA);
+        }
+        drawA();
+      </script>
+      
+
+</body>
+</html>
